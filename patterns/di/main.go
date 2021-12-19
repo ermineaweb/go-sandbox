@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/ermineaweb/sandbox/patterns/di/user"
+	"di/user"
 )
 
 func main() {

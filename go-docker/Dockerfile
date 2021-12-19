@@ -1,9 +1,0 @@
-FROM golang:1.16 as builder
-WORKDIR /build
-COPY ./ ./
-RUN CGO_ENABLED=0 go build -o ./bin/main ./src
-
-FROM alpine:3.7
-WORKDIR /app
-COPY --from=builder /build/bin/main ./main
-ENTRYPOINT ["./main"]

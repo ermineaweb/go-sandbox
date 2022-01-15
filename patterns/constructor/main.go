@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/ermineaweb/sandbox/patterns/constructor/user"
+	"constructor/user"
 )
 
 func main() {

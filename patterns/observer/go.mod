@@ -1,3 +1,3 @@
-module github.com/ermineaweb/sandbox/patterns/observer
+module observer
 
-go 1.16
+go 1.17

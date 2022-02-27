@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"di/user"
+	"go-sandbox/patterns/di/user"
 )
 
 func main() {

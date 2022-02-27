@@ -2,13 +2,11 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-
-	"constructor/user"
+	"go-sandbox/patterns/constructor/car"
 )
 
 func main() {
-	harry := user.NewUser("harry")
-	fmt.Println("the best sorcer is " + harry.GetUsername())
-	fmt.Println("his ID is " + strconv.Itoa(harry.GetId()))
+	harryCar := car.NewCar("harry", 3)
+	harryCar.Accelerate("140km/h")
+	fmt.Printf("harry's car is %d years old", harryCar.GetAge())
 }

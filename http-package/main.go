@@ -1,9 +1,9 @@
 package main
 
 import (
+	"go-sandbox/http-package/handlers"
 	"log"
 	"net/http"
-	"sandbox/handlers"
 )
 
 func main() {

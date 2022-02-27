@@ -2,10 +2,10 @@ package handlers
 
 import (
 	"encoding/json"
+	"go-sandbox/http-package/data"
 	"log"
 	"net/http"
 	"os"
-	"sandbox/data"
 )
 
 type Product struct {

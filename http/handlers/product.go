@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
-	"go-sandbox/http-package/data"
+	"go-sandbox/http/data"
 	"log"
 	"net/http"
 	"os"

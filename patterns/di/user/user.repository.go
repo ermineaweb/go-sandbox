@@ -6,16 +6,17 @@ var users = []User{
 	{Id: 789, Username: "Hermione"},
 }
 
-type RepositoryI interface {
-	GetAll() []User
-	GetById(int) User
-	Add(User) int
-}
-
 type Repository struct{}
 
-func (r Repository) GetAll() []User {
-	return users
+func NewUserRepository() Repository {
+	return Repository{}
+}
+
+func (r Repository) Add(user User) int {
+	id := len(users) + 1
+	newUser := User{Id: id, Username: user.Username}
+	users = append(users, newUser)
+	return newUser.Id
 }
 
 func (r Repository) GetById(id int) User {
@@ -28,9 +29,6 @@ func (r Repository) GetById(id int) User {
 	return user
 }
 
-func (r Repository) Add(user User) int {
-	id := len(users) + 1
-	newUser := User{Id: id, Username: user.Username}
-	users = append(users, newUser)
-	return newUser.Id
+func (r Repository) GetAll() []User {
+	return users
 }

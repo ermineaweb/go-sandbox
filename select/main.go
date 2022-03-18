@@ -6,35 +6,35 @@ import (
 )
 
 func main() {
-	res := make(chan time.Duration)
+	resSlow := make(chan time.Duration)
+	resFast := make(chan time.Duration)
+
 	// execute 3 times each request
 	for i := 1; i <= 3; i++ {
-		go slowFakeRequest(time.Now(), res)
-		go fastFakeRequest(time.Now(), res)
+		go slowFakeRequest(i, time.Now(), resSlow)
+		go fastFakeRequest(i, time.Now(), resFast)
 	}
-	close(res)
-	for {
+
+	for i := 1; i <= 6; i++ {
 		select {
-		case <-res:
+		case res1 := <-resSlow:
+			fmt.Printf("received slow result %s", res1)
+		case res2 := <-resFast:
+			fmt.Printf("received fast result %s", res2)
 		}
 	}
-	// <-res
-	// <-res
-	// <-res
-	// <-res
-	// <-res
 }
 
-func slowFakeRequest(now time.Time, res chan time.Duration) {
+func slowFakeRequest(requestCount int, now time.Time, res chan time.Duration) {
 	duration := 4 * time.Second
 	time.Sleep(duration)
-	fmt.Printf("slow request take %ss\n", time.Since(now))
+	fmt.Printf("%d slow request take %ss\n", requestCount, time.Since(now))
 	res <- time.Since(now)
 }
 
-func fastFakeRequest(now time.Time, res chan time.Duration) {
+func fastFakeRequest(requestCount int, now time.Time, res chan time.Duration) {
 	duration := 1 * time.Second
 	time.Sleep(duration)
-	fmt.Printf("fast request take %ss\n", time.Since(now))
+	fmt.Printf("%d fast request take %ss\n", requestCount, time.Since(now))
 	res <- time.Since(now)
 }

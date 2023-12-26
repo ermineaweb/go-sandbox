@@ -2,4 +2,4 @@
 
 DOCKER_APP_NAME="go-app"
 
-docker build -f Dockerfile-build -t $DOCKER_APP_NAME:latest .
+docker build -t $DOCKER_APP_NAME:latest .

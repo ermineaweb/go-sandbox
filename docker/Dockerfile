@@ -1,12 +1,11 @@
-FROM golang:1.18 as builder
+FROM golang:1.21.5 as builder
 WORKDIR /build
-COPY ./go.mod ./
-COPY ./go.sum ./
+COPY ./go.* ./
 RUN go mod download
 COPY ./ ./
 RUN CGO_ENABLED=0 go build -o ./bin/main ./src
 
-FROM alpine:3.15
+FROM scratch
 WORKDIR /app
 COPY --from=builder /build/bin/main ./main
 ENTRYPOINT ["./main"]

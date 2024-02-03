@@ -9,7 +9,7 @@ import (
 func main() {
 	start := time.Now()
 	fmt.Printf("winner: %v\n", quickestSorcerer())
-	fmt.Printf("time elapsed: %vs\n", time.Since(start).Seconds())
+	fmt.Printf("\ntime elapsed %v\n", time.Since(start).Seconds())
 }
 
 func quickestSorcerer() string {

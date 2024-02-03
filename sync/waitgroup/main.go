@@ -16,13 +16,13 @@ func main() {
 	for v := 1; v <= count; v++ {
 		// wg.Add(1)
 		go func(number int) {
+			defer wg.Done()
 			fmt.Printf("result %v\n", longFunction(number))
-			wg.Done()
 		}(v)
 	}
-	wg.Wait()
 
-	fmt.Printf("time elapsed: %vs\n", time.Since(start).Seconds())
+	wg.Wait()
+	fmt.Printf("\ntime elapsed %v\n", time.Since(start).Seconds())
 }
 
 func longFunction(number int) int {

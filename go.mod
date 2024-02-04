@@ -1,6 +1,6 @@
 module go-sandbox
 
-go 1.18
+go 1.21.6
 
 require (
 	github.com/go-playground/validator/v10 v10.10.1
